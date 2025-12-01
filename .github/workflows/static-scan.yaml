@@ -1,6 +1,7 @@
 name: Static Scans
 
 on:
+  push:
   workflow_dispatch:
 
 permissions:
