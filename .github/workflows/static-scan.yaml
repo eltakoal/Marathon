@@ -81,17 +81,13 @@ jobs:
           path: /tmp/spotbugs-results.sarif
 
       - name: Hadolint Dockerfile Linter
-        uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf
+        uses: hadolint/hadolint-action@2332a7b74a6de0dda2e2221d575162eba76ba5e5
         with:
           dockerfile: Dockerfile
           recursive: true
           no-fail: true
           format: sarif
-
-      - name: Write HADOLINT_RESULTS to SARIF file
-        run: echo "$HADOLINT_RESULTS" > /tmp/hadolint-results.sarif
-        env:
-          HADOLINT_RESULTS: ${{ env.HADOLINT_RESULTS }}
+          output-file: /tmp/hadolint-results.sarif
 
       - name: Upload Hadolint SARIF Results
         uses: actions/upload-artifact@v4
